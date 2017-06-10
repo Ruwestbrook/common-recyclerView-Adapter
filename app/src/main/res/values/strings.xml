@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RecyclerView</string>
+    <string name="title_activity_list">内涵段子列表</string>
+</resources>
