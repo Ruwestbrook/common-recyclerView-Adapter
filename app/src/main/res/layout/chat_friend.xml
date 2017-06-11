@@ -3,7 +3,7 @@
               android:orientation="vertical"
               android:id="@+id/chat"
               android:gravity="left|center_vertical"
-          android:background="@color/comment_adapter_divider_night"
+
               android:textSize="15dp"
               android:paddingRight="20dp"
               android:layout_width="match_parent"

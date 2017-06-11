@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.westbrook.recyclerview.AdapterActivity">
-    <android.support.v7.widget.RecyclerView
+    <com.example.westbrook.recyclerview.commonAdapter.MyRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recycler_view"/>

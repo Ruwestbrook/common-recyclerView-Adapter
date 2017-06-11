@@ -5,11 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.example.westbrook.recyclerview.commonAdapter.CommonAdapter;
 import com.example.westbrook.recyclerview.commonAdapter.MultiTypeSupport;
+import com.example.westbrook.recyclerview.commonAdapter.MyRecyclerView;
 import com.example.westbrook.recyclerview.commonAdapter.ViewHolder;
 
 import java.util.ArrayList;
@@ -19,10 +22,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class AdapterActivity extends AppCompatActivity {
-    private static final String TAG = "AdapterActivity";
+
 
     @Bind(R.id.recycler_view)
-    RecyclerView mRecyclerView;
+    MyRecyclerView mRecyclerView;
     List<Person> mList=new ArrayList<>();
     private MultiTypeSupport<Person> myType;
 
@@ -44,19 +47,19 @@ public class AdapterActivity extends AppCompatActivity {
             }
         };
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        CommonAdapter<Person> commonAdapter=new CommonAdapter<Person>(mList,this,myType) {
+        CommonAdapter<Person> commonAdapter=new CommonAdapter<Person>(mList,this,R.layout.chat_me) {
             @Override
             public void filling(ViewHolder holder, Person o, int position) {
-                if(o.getIsMe()==0){
-                    holder.setText(R.id.chat,o.getChat());
-                    Log.d(TAG, "filling: "+ holder.itemView.toString());
-                }else {
-                    holder.setText(R.id.chat_me,o.getChat());
-                    Log.d(TAG, "filling: "+ holder.itemView.toString());
-                }
+                holder.setText(R.id.chat_me,o.getChat());
+
             }
         };
         mRecyclerView.setAdapter(commonAdapter);
+        View view= LayoutInflater.from(this).inflate(R.layout.header,mRecyclerView,false);
+        mRecyclerView.addHeaderView(view);
+        View view1= LayoutInflater.from(this).inflate(R.layout.header,mRecyclerView,false);
+        mRecyclerView.addFooterView(view1);
+
     }
 
     private void getData(){
@@ -93,27 +96,5 @@ public class AdapterActivity extends AppCompatActivity {
         public String chat;
         public int isMe;
     }
-    class Adapter extends RecyclerView.Adapter<Adapter.Holder>{
-        @Override
-        public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return null;
-        }
 
-        @Override
-        public int getItemCount() {
-            return mList.size();
-        }
-
-        @Override
-        public void onBindViewHolder(Holder holder, int position) {
-
-        }
-
-        class Holder extends RecyclerView.ViewHolder{
-
-            public Holder(View itemView) {
-                super(itemView);
-            }
-        }
-    }
 }
