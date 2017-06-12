@@ -27,7 +27,6 @@ public class AdapterActivity extends AppCompatActivity {
     @Bind(R.id.recycler_view)
     MyRecyclerView mRecyclerView;
     List<Person> mList=new ArrayList<>();
-    private MultiTypeSupport<Person> myType;
 
 
     @Override
@@ -36,16 +35,6 @@ public class AdapterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_adapter);
         ButterKnife.bind(this);
         getData();
-        myType=new MultiTypeSupport<Person>() {
-            @Override
-            public int getLayoutId(Person item) {
-                if(item.getIsMe()==0){
-                    return R.layout.chat_friend;
-                }else {
-                    return R.layout.chat_me;
-                }
-            }
-        };
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         CommonAdapter<Person> commonAdapter=new CommonAdapter<Person>(mList,this,R.layout.chat_me) {
             @Override
@@ -59,6 +48,7 @@ public class AdapterActivity extends AppCompatActivity {
         mRecyclerView.addHeaderView(view);
         View view1= LayoutInflater.from(this).inflate(R.layout.header,mRecyclerView,false);
         mRecyclerView.addFooterView(view1);
+        mRecyclerView.removeHeaderView(view);
 
     }
 

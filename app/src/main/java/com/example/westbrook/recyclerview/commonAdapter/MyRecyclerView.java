@@ -59,4 +59,26 @@ public class MyRecyclerView extends RecyclerView {
             this.setAdapter(mAdapter);
         }
     }
+    public void removeHeaderView(View view) {
+        if(adapter==null)
+            adapter= (CommonAdapter) getAdapter();
+        if(mAdapter==null)
+            mAdapter=new HeaderAdapter(adapter);
+        if(adapter!=null){
+            mAdapter.removeHeaderFooterView(1,view);
+            mAdapter.notifyDataSetChanged();
+            this.setAdapter(mAdapter);
+        }
+    }
+    public void removeFooterView(View view) {
+        if(adapter==null)
+            adapter= (CommonAdapter) getAdapter();
+        if(mAdapter==null)
+            mAdapter=new HeaderAdapter(adapter);
+        if(adapter!=null){
+            mAdapter.removeHeaderFooterView(-1,view);
+            mAdapter.notifyDataSetChanged();
+            this.setAdapter(mAdapter);
+        }
+    }
 }

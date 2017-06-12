@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
     Button mButton;
     @Bind(R.id.button2)
     Button mButton2;
-
+    @Bind(R.id.button3)
+    Button mButton3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    @OnClick({R.id.textView, R.id.button,R.id.button2})
+    @OnClick({R.id.textView, R.id.button,R.id.button2,R.id.button3})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.textView:
@@ -64,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.button2:
                 startActivity(new Intent(this, AdapterActivity.class));
+                break;
+            case R.id.button3:
+                startActivity(new Intent(this, MoveActivity.class));
                 break;
         }
     }

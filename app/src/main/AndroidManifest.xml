@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".AdapterActivity">
         </activity>
+        <activity android:name=".MoveActivity">
+        </activity>
     </application>
 
 </manifest>

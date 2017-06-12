@@ -82,4 +82,12 @@ public class HeaderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return mAdapter.getItemCount()+headerView.size()+footView.size();
     }
 
+    public void removeHeaderFooterView(int i, View view) {
+        if(i>0){
+            //删除头部
+            headerView.removeAt(headerView.indexOfValue(view));
+        }else {
+            //删除底部
+        }
+    }
 }
